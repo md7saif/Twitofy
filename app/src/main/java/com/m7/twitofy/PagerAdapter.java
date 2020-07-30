@@ -7,19 +7,29 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 public class PagerAdapter extends FragmentPagerAdapter {
 
+    private int numOfTabs;
 
-    public PagerAdapter(@NonNull FragmentManager fm) {
+    public PagerAdapter(@NonNull FragmentManager fm, int numOfTabs ) {
         super(fm);
+        this.numOfTabs = numOfTabs;
     }
 
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return null;
+
+        switch (position) {
+            case 0:
+                return new GraphFragment();
+            case 1:
+                return new TweetsFragment();
+            default:
+                return null;
+        }
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return numOfTabs;
     }
 }
